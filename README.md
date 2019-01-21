@@ -3,7 +3,7 @@
 This is the codebase for my entry into the [NeurIPS 2018: AI for Prosthetics Challenge](https://www.crowdai.org/challenges/neurips-2018-ai-for-prosthetics-challenge). The goal is to learn how to control simulated human muscles to learn how to walk with a prosthetic leg, using reinforcement learning.
 
 Here is a video of an agent I trained using the DDPG reinforcement learning algorithm:  
-[https://youtu.be/c4vT1WvYUys](https://youtu.be/c4vT1WvYUys)
+[https://youtu.be/lxv88uEQ1uw](https://youtu.be/lxv88uEQ1uw)
 
 ![video screenshot](screenshots/video_screenshot.png)
 
@@ -12,7 +12,7 @@ Ultimately, I placed number 50 out of 432 participants in round 1 (see [official
 
 ![leaderboard screenshot](screenshots/leaderboard_rd1.png)
 
-I used vanilla [DDPG](https://arxiv.org/abs/1509.02971) from the package/framework [RLlib](https://ray.readthedocs.io/en/latest/rllib.html). The video [linked previously](https://youtu.be/c4vT1WvYUys) shows my agent during evaluation.
+I used vanilla [DDPG](https://arxiv.org/abs/1509.02971) from the package/framework [RLlib](https://ray.readthedocs.io/en/latest/rllib.html). The video [linked previously](https://youtu.be/lxv88uEQ1uw) shows my agent during evaluation.
 
 Unfortunately, I did not clip my action values between 0 and 1 on the agent side (the rules *did* specify this), and on the environment side they did not clip the action values either, for round 1. So after getting good results in round 1, later in round 2, the competition organizers decided to clip the action values on the environment side. Due to other commitments, it was too late for me to retrain all my models for round 2, so I decided not to participate in round 2.
 
