@@ -2,16 +2,17 @@
 
 This is the codebase for my entry into the [NeurIPS 2018: AI for Prosthetics Challenge](https://www.crowdai.org/challenges/neurips-2018-ai-for-prosthetics-challenge). The goal is to learn how to control simulated human muscles to learn how to walk with a prosthetic leg, using reinforcement learning.
 
-[Here](https://youtu.be/c4vT1WvYUys) is a video of an agent I trained using the [DDPG](https://arxiv.org/abs/1509.02971) reinforcement learning algorithm.
+Here is a video of an agent I trained using the DDPG reinforcement learning algorithm:  
+[https://youtu.be/c4vT1WvYUys](https://youtu.be/c4vT1WvYUys)
 
 ![video screenshot](screenshots/video_screenshot.png)
 
 ## Competition results
-Ultimately, I placed number 50 out of 432 participants in round 1 ([official leaderboard](https://www.crowdai.org/challenges/neurips-2018-ai-for-prosthetics-challenge/leaderboards?challenge_round_id=47)).
+Ultimately, I placed number 50 out of 432 participants in round 1 (see [official leaderboard](https://www.crowdai.org/challenges/neurips-2018-ai-for-prosthetics-challenge/leaderboards?challenge_round_id=47)).
 
 ![leaderboard screenshot](screenshots/leaderboard_rd1.png)
 
-I used vanilla [DDPG](https://arxiv.org/abs/1509.02971) from the package/framework [RLlib](https://ray.readthedocs.io/en/latest/rllib.html). The video [linked previously](https://youtu.be/c4vT1WvYUys) shows my agent in action.
+I used vanilla [DDPG](https://arxiv.org/abs/1509.02971) from the package/framework [RLlib](https://ray.readthedocs.io/en/latest/rllib.html). The video [linked previously](https://youtu.be/c4vT1WvYUys) shows my agent during evaluation.
 
 Unfortunately, I did not clip my action values between 0 and 1 on the agent side (the rules *did* specify this), and on the environment side they did not clip the action values either, for round 1. So after getting good results in round 1, later in round 2, the competition organizers decided to clip the action values on the environment side. Due to other commitments, it was too late for me to retrain all my models for round 2, so I decided not to participate in round 2.
 
