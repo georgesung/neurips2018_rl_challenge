@@ -1,0 +1,68 @@
+prostheticsenv-ddpg:
+    env: prosthetics_env
+    run: DDPG
+    state_norm_file: state_norm.p
+    downsample_factor: 3
+    integrator_accuracy: 0.001
+    checkpoint_period: 5
+    output_dir:
+        bucket: your-bucket
+        path: path/to/exp/output
+    load_prev_agent: latest
+    custom_reward: True
+    custom_reward_params:  # for more details see utils.py
+        fall_penalty: -100.0
+        orig_reward_floor: 0.0  # clip original reward so it's always positive
+        reward_offset: null
+        hip_knee_flexion_reward: null
+        knee_flexion_reward: null
+        head_pelvis_delta_x_reward: null
+        feet_center_pelvis_dist_penalty:
+            penalty_scale: 20.0
+        exp_reward: False
+
+    agent_config:
+        # === Model ===
+        actor_hiddens: [512, 512]
+        critic_hiddens: [512, 512]
+        n_step: 1  # n_step > 1 doesn't work!
+        model: {}
+        gamma: 0.99
+        env_config: {}
+
+        # === Exploration ===
+        schedule_max_timesteps: 100000
+        timesteps_per_iteration: 1000
+        exploration_fraction: 1.0
+        exploration_final_eps: 0.02
+        noise_scale: 0.75
+        exploration_theta: 0.15
+        exploration_sigma: 0.2
+        target_network_update_freq: 0
+        tau: 0.001
+
+        # === Replay buffer ===
+        buffer_size: 100000
+        prioritized_replay: True
+        prioritized_replay_alpha: 0.6
+        prioritized_replay_beta: 0.4
+        prioritized_replay_eps: 0.000001
+        clip_rewards: False
+
+        # === Optimization ===
+        actor_lr: 0.0001
+        critic_lr: 0.001
+        use_huber: False
+        huber_threshold: 1.0
+        l2_reg: 0.000001
+        learning_starts: 500
+        sample_batch_size: 1
+        train_batch_size: 256
+
+        # === Parallelism ===
+        num_workers: 4
+        num_gpus_per_worker: 0
+        optimizer_class: "SyncReplayOptimizer"
+        #optimizer_config: {}
+        per_worker_exploration: False
+        worker_side_prioritization: False

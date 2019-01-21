@@ -1,0 +1,38 @@
+prostheticsenv-ppo:
+    env: prosthetics_env
+    run: PPO
+    state_norm_file: state_norm.p
+    downsample_factor: 1
+    integrator_accuracy: 0.001
+    checkpoint_period: 5
+    output_dir:
+        bucket: your-bucket
+        path: path/to/exp/output
+    load_prev_agent: latest
+    custom_reward: True
+    custom_reward_params:  # for more details see utils.py
+        fall_penalty: -100
+        orig_reward_floor: 0.0  # clip original reward so it's always positive
+        reward_offset: null
+        hip_knee_flexion_reward: null
+        knee_flexion_reward: null
+        head_pelvis_delta_x_reward: null
+        feet_center_pelvis_dist_penalty:
+            penalty_scale: 20.0
+        exp_reward: False
+
+    # PPO config
+    agent_config:
+        gamma: 0.99
+        lambda: 0.95
+        clip_param: 0.2
+        kl_coeff: 1.0
+        num_sgd_iter: 30
+        sgd_stepsize: .0001
+        sgd_batchsize: 256
+        timesteps_per_batch: 4000
+        model:
+            #free_log_std: True
+            fcnet_hiddens: [512, 512]
+            use_lstm: True
+        num_workers: 6
