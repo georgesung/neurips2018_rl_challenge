@@ -62,7 +62,7 @@ It may be helpful to run multiple simultaneous experiments to try different comb
 
 ## Inference
 ### (Optional) Download pre-trained DDPG model
-You can download my pre-trained DDPG model that I used to submit to round 1 [here](https://drive.google.com/file/d/1GUn8vF5bzX7OyB3UBu2sY5TZd-V90FbJ/view?usp=sharing)
+You can download my pre-trained DDPG model that I used to submit to round 1 [here](https://drive.google.com/open?id=1GUn8vF5bzX7OyB3UBu2sY5TZd-V90FbJ)
 
 Since I used an older (competition round 1) version of the environment, the results I obtained may not be what you obtain if you use the latest version of the environment. However, if you run inference in the Docker container, you should get the same/similar results as me.
 
